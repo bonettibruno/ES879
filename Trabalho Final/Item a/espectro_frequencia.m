@@ -26,4 +26,4 @@ plot(frequencies, abs(Y));
 xlabel('Frequência (Hz)');
 ylabel('Magnitude');
 title('Espectro de Magnitudes do Sinal de Áudio');
-xlim([0, Fs]);
+xlim([0, Fs/2]);

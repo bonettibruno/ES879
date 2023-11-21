@@ -48,4 +48,5 @@ ylabel('Magnitude');
 legend('Sinal Original', 'Sinal Decimado');
 xlim([0, Fs/16]);
 
+soundsc(y, Fs)
 soundsc(y_decimado, Fs/8)
