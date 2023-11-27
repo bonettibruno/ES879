@@ -36,17 +36,7 @@ Y_decimado = Y_decimado * 8;
 
 frequencies_decimado = linspace(0, Fs/8, length(Y_decimado));
 
-% Plot no domínio da frequência
-figure;
-plot(frequencies_original, abs(Y_original), 'b', 'LineWidth', 1.5);
-hold on;
-plot(frequencies_decimado, abs(Y_decimado), 'r', 'LineWidth', 1.5);
-hold off;
-title('Espectro de Magnitudes - Sinal Original e Sinal Decimado');
-xlabel('Frequência (Hz)');
-ylabel('Magnitude');
-legend('Sinal Original', 'Sinal Decimado');
-xlim([0, Fs/16]);
+
 
 soundsc(y, Fs)
 soundsc(y_decimado, Fs/8)

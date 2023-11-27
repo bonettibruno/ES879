@@ -27,3 +27,13 @@ xlabel('Frequência (Hz)');
 ylabel('Magnitude');
 title('Espectro de Magnitudes do Sinal de Áudio');
 xlim([0, Fs/2]);
+
+% Encontrar picos no espectro
+[peaks, locs] = findpeaks(abs(Y), frequencies);
+
+% Identificar a frequência máxima
+[maxPeak, maxIndex] = max(peaks);
+f_max_espectro = locs(maxIndex);
+
+% Mostrar a frequência máxima no console
+disp(['Frequência máxima no espectro: ', num2str(f_max_espectro), ' Hz']);
