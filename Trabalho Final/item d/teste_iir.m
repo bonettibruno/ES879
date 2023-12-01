@@ -14,8 +14,8 @@ ymedio = mean(y);
 y = y - ymedio;
 
 % Projeto do filtro IIR (Butterworth)
-Fc_b = 50; % frequência de corte
-N_b = 50; % ordem (testar 20, 30 e 50)
+Fc_b = 500; % frequência de corte
+N_b = 20; % ordem (testar 20, 30 e 50)
 d = fdesign.lowpass('N,F3dB',N_b,Fc_b/(Fs/2));
 h_b = design(d,'butter');
 
@@ -53,4 +53,4 @@ ylabel("Amplitude");
 legend('Sinal Original', 'Sinal Filtrado');
 
 %soundsc(y, Fs)
-soundsc(y_filtrado, Fs);
+%soundsc(y_filtrado, Fs);
