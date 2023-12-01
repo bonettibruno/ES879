@@ -5,7 +5,17 @@ close all;
 [y, Fs] = audioread("Viva la vida - coldplay.wav");
 y = y(:, 1) + y(:, 2);
 
-%Dominio do tempo
+% Calculando a média do sinal
+ymedio = mean(y);
+
+ymedio
+% Subtrai a média de cada elemento do sinal
+% Pois: "Se a média do sinal não for zero, irá aparecer uma componente na frequência
+% 0, correspondente ao ganho estático"
+y = y - ymedio;
+
+
+% Dominio do tempo
 t = linspace(0, length(y)/Fs, length(y));
 figure;
 subplot(2,1,1);
@@ -14,8 +24,11 @@ title("Domínio do tempo");
 xlabel("t(s)");
 ylabel("Amplitude");
 
-%Dominio da Frequencia
-Y = fft(y);
+% Dominio da Frequencia
+% Ao pegar somente a parte positiva do sinal, requer que essa amplitude da metade
+%do espectro seja multiplicada por 2 para representar a amplitude do sinal com
+% precisão.
+Y = 2 * fft(y);
 
 % Calcule o vetor de frequências
 frequencies = linspace(0, Fs, length(Y));
