@@ -13,18 +13,18 @@ ymedio = mean(y);
 % 0, correspondente ao ganho estático"
 y = y - ymedio;
 
-% Projeto do filtro FIR
-Fc = 50; % Frequência de corte(teste 50, 500, 5000)
-N = 50; % Ordem do filtro (teste 50, 100, 200)
-h = fir1(N + 1, Fc/(Fs/2));
+% Projeto do filtro IIR (Butterworth)
+Fc_b = 50; % frequência de corte
+N_b = 50; % ordem (testar 20, 30 e 50)
+d = fdesign.lowpass('N,F3dB',N_b,Fc_b/(Fs/2));
+h_b = design(d,'butter');
 
-% Resposta em Frequência do Filtro
-freqz(h, 1, 1024, Fs);
+fvtool(h_b);
 
-% Aplicar o filtro FIR ao sinal original
-y_filtrado = filter(h, 1, y);
+% Fazendo a convolução do filtro com o sinal contaminado
+y_filtrado = filter(h_b, y);
 
-%Dominio da Frequencia
+% Domínio da Frequência
 Y_original = 2 * fft(y);
 Y_filtrado = 2 * fft(y_filtrado);
 
@@ -47,11 +47,10 @@ figure;
 plot(linspace(0, length(y)/Fs, length(y)), y, 'b', 'LineWidth', 1.5);
 hold on;
 plot(t_filtrado, y_filtrado, 'r', 'LineWidth', 1.5);
-title("Comparação do Sinal Original e Filtrado no Dominio do tempo");
+title("Comparação do Sinal Original e Filtrado no Domínio do Tempo");
 xlabel("t (s)");
 ylabel("Amplitude");
 legend('Sinal Original', 'Sinal Filtrado');
-\
 
 %soundsc(y, Fs)
-soundsc(y_filtrado, Fs)
+soundsc(y_filtrado, Fs);

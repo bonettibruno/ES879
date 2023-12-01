@@ -54,4 +54,4 @@ legend('Sinal Original', 'Sinal Filtrado');
 
 
 %soundsc(y, Fs)
-soundsc(y_filtrado, Fs)
+%soundsc(y_filtrado, Fs)

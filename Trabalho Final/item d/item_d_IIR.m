@@ -5,6 +5,14 @@ close all;
 [y, Fs] = audioread("Viva la vida - coldplay.wav");
 y = y(:, 1) + y(:, 2);
 
+% Calculando a média do sinal
+ymedio = mean(y);
+
+% Subtraindo a média de cada elemento do sinal
+% Pois: "Se a média do sinal não for zero, irá aparecer uma componente na frequência
+% 0, correspondente ao ganho estático"
+y = y - ymedio;
+
 % Projeto do filtro IIR (Butterworth)
 Fc_b = 50; % Frequência de corte
 N_b = 4;   % Ordem do filtro (ajuste conforme necessário:1,2,4)
@@ -14,8 +22,8 @@ N_b = 4;   % Ordem do filtro (ajuste conforme necessário:1,2,4)
 y_iir = filter(b, a, y);
 
 %Dominio da Frequencia
-Y_original = fft(y);
-Y_iir = fft(y_iir);
+Y_original = 2 * fft(y);
+Y_iir = 2 * fft(y_iir);
 
 % Plotar os espectros de magnitude do sinal original e do sinal filtrado
 figure;
