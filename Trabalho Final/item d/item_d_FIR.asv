@@ -14,8 +14,8 @@ ymedio = mean(y);
 y = y - ymedio;
 
 % Projeto do filtro FIR
-Fc = 500; % Frequência de corte(teste 50, 500, 5000)
-N = 100; % Ordem do filtro (teste 50, 100, 200)
+Fc = 50; % Frequência de corte(teste 50, 500, 5000)
+N = 50; % Ordem do filtro (teste 50, 100, 200)
 h = fir1(N + 1, Fc/(Fs/2));
 
 % Resposta em Frequência do Filtro
@@ -51,7 +51,7 @@ title("Comparação do Sinal Original e Filtrado no Dominio do tempo");
 xlabel("t (s)");
 ylabel("Amplitude");
 legend('Sinal Original', 'Sinal Filtrado');
-
+\
 
 %soundsc(y, Fs)
 soundsc(y_filtrado, Fs)
