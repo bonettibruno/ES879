@@ -71,4 +71,4 @@ xlim([0, Fs/16]);
 legend('Sinal Original', 'Sinal Decimado');
 
 %soundsc(y, Fs)
-soundsc(y_decimado, Fs/8)
+%soundsc(y_decimado, Fs/8)
