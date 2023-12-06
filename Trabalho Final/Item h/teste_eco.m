@@ -6,6 +6,9 @@ close all;
 [y, Fs] = audioread("Viva la vida - coldplay.wav");
 y = y(:, 1) + y(:, 2);
 
+ymedio = mean(y);
+y = y - ymedio;
+
 % Especificações do filtro
 a = 0.5; % Parâmetro dado
 t_atraso = 0.2; % Atraso desejado em segundos

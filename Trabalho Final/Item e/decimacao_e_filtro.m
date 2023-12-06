@@ -6,9 +6,13 @@ close all;
 y = y(:, 1) + y(:, 2);
 
 % Calculando a média do sinal
-ymedio = mean(y);
+ymedio = mean(y)
+
+
 
 y = y - ymedio;
+
+mean(y)
 
 % Projeto do filtro FIR
 Fc = 500; % Frequência de corte (teste 50, 500, 5000)
@@ -55,4 +59,4 @@ title("Sinal Original e Sinal Filtrado/Decimado - Domínio da Frequência");
 legend('Sinal Original', 'Sinal Filtrado Decimado');
 xlim([0, Fs/16]);
 
-soundsc(y_filtrado_decimado, Fs/8)
+%soundsc(y_filtrado_decimado, Fs/8)
