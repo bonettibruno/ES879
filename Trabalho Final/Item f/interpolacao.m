@@ -10,13 +10,13 @@ ymedio = mean(y);
 
 y = y - ymedio;
 
-% Aumentar a taxa de amostragem por um fator de L = 4
+%Interpolando com L = 4
 L = 4;
 y_superamostrado = interp(y, L);
 
 t_superamostrado = linspace(0, length(y_superamostrado)/(Fs*L), length(y_superamostrado));
 
-% Plot no domínio do tempo para o sinal original e superamostrado
+%Plotando no domínio do tempo para o sinal original e superamostrado
 figure;
 subplot(2,1,1);
 plot(linspace(0, length(y)/Fs, length(y)), y, 'b', 'LineWidth', 1.5);
@@ -38,7 +38,7 @@ frequencies_original = linspace(0, Fs, length(Y_original));
 Y_superamostrado = 2 * fft(y_superamostrado);
 frequencies_superamostrado = linspace(0, Fs*L, length(Y_superamostrado));
 
-% Plote os espectros de magnitude do sinal original e do sinal superamostrado
+% Plotando os espectros original e superamostrado
 figure;
 subplot(2,1,1);
 plot(frequencies_original(1:length(frequencies_original)/2), abs(Y_original(1:length(Y_original)/2)), 'b', 'LineWidth', 1.5);
@@ -63,5 +63,7 @@ title("Sinal Original e Interpolado - Domínio da Frequência");
 legend("Sinal Original", "Sinal Interpolado dividido por 4");
 xlim([0, Fs/2]);
 
-soundsc(y, Fs)
+%soundsc(y, Fs)
 %soundsc(y_superamostrado, Fs*L);
+
+%audiowrite("Audio interpolado em 4.wav", y_superamostrado, Fs*L);

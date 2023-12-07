@@ -5,12 +5,9 @@ close all;
 [y, Fs] = audioread("Viva la vida - coldplay.wav");
 y = y(:, 1) + y(:, 2);
 
-% Calculando a média do sinal
 ymedio = mean(y);
 
 % Subtraindo a média de cada elemento do sinal
-% Pois: "Se a média do sinal não for zero, irá aparecer uma componente na frequência
-% 0, correspondente ao ganho estático"
 y = y - ymedio;
 
 y_decimado = decimate(y, 8);

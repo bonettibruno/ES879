@@ -5,7 +5,6 @@ close all;
 [y, Fs] = audioread("Viva la vida - coldplay.wav");
 y = y(:, 1) + y(:, 2);
 
-% Calculando a média do sinal
 ymedio = mean(y);
 
 y = y - ymedio;
@@ -15,13 +14,10 @@ Fc = 500;
 N = 200; 
 h = fir1(N + 1, Fc/(Fs/2));
 
-% Aplicar o filtro FIR ao sinal original
 y_filtrado = filter(h, 1, y);
 
-% Reduzindo a taxa de amostragem do sinal filtrado
 y_filtrado_decimado = decimate(y_filtrado, 8);
 
-% Reduzindo a taxa de amostragem do sinal original
 y_decimado = decimate(y, 8);
 
 % Vetor de tempo para o sinal decimado
@@ -61,4 +57,6 @@ legend('Sinal Decimado', 'Sinal Filtrado e Decimado');
 xlim([0, Fs/16]);
 
 %soundsc(y_decimado, Fs/8)
-soundsc(y_filtrado_decimado, Fs/8)
+%soundsc(y_filtrado_decimado, Fs/8)
+
+%audiowrite("Áudio filtrado em 500 Hz e Decimado em 8.wav", y_filtrado_decimado, round(Fs/8));
