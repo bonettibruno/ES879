@@ -8,9 +8,6 @@ y = y(:, 1) + y(:, 2);
 % Calculando a média do sinal
 ymedio = mean(y);
 
-% Subtraindo a média de cada elemento do sinal
-% Pois: "Se a média do sinal não for zero, irá aparecer uma componente na frequência
-% 0, correspondente ao ganho estático"
 y = y - ymedio;
 
 % Aumentar a taxa de amostragem por um fator de L = 4
@@ -66,5 +63,5 @@ title("Sinal Original e Interpolado - Domínio da Frequência");
 legend("Sinal Original", "Sinal Interpolado dividido por 4");
 xlim([0, Fs/2]);
 
-%soundsc(y, Fs)
+soundsc(y, Fs)
 %soundsc(y_superamostrado, Fs*L);

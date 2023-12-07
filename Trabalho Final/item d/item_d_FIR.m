@@ -14,8 +14,8 @@ ymedio = mean(y);
 y = y - ymedio;
 
 % Projeto do filtro FIR
-Fc = 500; % Frequência de corte(teste 50, 500, 5000)
-N = 100; % Ordem do filtro (teste 50, 100, 200)
+Fc = 50; % Frequência de corte(teste 50, 500, 5000)
+N = 200; % Ordem do filtro (teste 50, 100, 200)
 h = fir1(N + 1, Fc/(Fs/2));
 
 % Resposta em Frequência do Filtro
@@ -52,6 +52,8 @@ xlabel("t (s)");
 ylabel("Amplitude");
 legend('Sinal Original', 'Sinal Filtrado');
 
+
+audiowrite("Audio Filtrado em 50 Hz.wav", y_filtrado, Fs);  
 
 %soundsc(y, Fs)
 %soundsc(y_filtrado, Fs)
