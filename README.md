@@ -1,4 +1,5 @@
 # ES879 - Trabalho Final
+Trabalho Final da disciplina de Sistemas de Aquisição de Dados
 ## Participantes:
 ### Bruno Cardoso Holanda 167542
 ### Bruno Monteiro Bonetti 232488
