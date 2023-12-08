@@ -10,7 +10,7 @@ y = y - ymedio;
 
 %Especificações do filtro de eco desejado
 a = 0.5; 
-t_atraso = 0.025;
+t_atraso = 0.5;
 
 % Calculando o número de amostras para o atraso desejado
 D = round(t_atraso * Fs);
@@ -65,5 +65,5 @@ title('Espectro do Sinal com Eco');
 xlabel('Frequência (Hz)');
 ylabel('Amplitude');
 
-soundsc(y_filtrado, Fs);
-audiowrite("Audio com eco de 0,025s.wav", y_filtrado, Fs);
+%soundsc(y_filtrado, Fs);
+%audiowrite("Audio com eco de 0,025s.wav", y_filtrado, Fs);
